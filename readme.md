@@ -61,4 +61,4 @@ Provide these as the options argument in the `useInViewTrigger` hook
 | root       | Element            | document | The Intersection Observer interface's read-only root property identifies the Element or Document                                                           |     |
 | rootMargin | string             | 0px      | Margin around the root (css margin property )                                                                                                              |     |
 | threshold  | number or number[] | 0        | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger |     |
-| callback   | function           | void     | A function that will be called when the observer is fired, (use it for your own                                                                            |     |
+| callback   | function           | void     | A function that will be called when the observer is fired, (use it for your own logic)                                                                     |     |
