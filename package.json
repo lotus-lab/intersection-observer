@@ -1,5 +1,5 @@
 {
-  "name": "react-neti",
+  "name": "@intersection-observer/react",
   "version": "0.0.01",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
