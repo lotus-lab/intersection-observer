@@ -1,4 +1,4 @@
-# @intersection-observer/react
+# react-intersections
 
 In the past, determining an element's visibility or the relative visibility of two elements in relation to one another has been a challenging problem for which solutions have been unreliable and prone to slowing down the user's browser and the websites they are browsing. The demand for this kind of information has increased as the web has developed. There are several reasons why intersection information is necessary, including:
 
@@ -11,7 +11,9 @@ In the past, determining an element's visibility or the relative visibility of t
 
 [Github repository](https://github.com/Humed-Muhammad/react-net)
 
-### The hook returns for now returns a targetRef for your target, inView boolean, entry and a visibilityTime for how long the target was visible (best for calcualting ad revenues)
+#### The hook for now returns a targetRef for your target, inView boolean, entry and a visibilityTime for how long the target was visible (best for calcualting ad revenues)
+
+=== More will be added in a future releases ===
 
 ```ts
  interface Options {
@@ -34,7 +36,7 @@ callback is a function that will be called when the observer is fired use it for
 
 ```tsx
 import React from "react";
-import { useInViewTrigger } from "@intersection-observer/react";
+import { useInViewTrigger } from "react-intersections";
 
 export const App = () => {
   const rootRef = React.useRef<HTMLDivElement>(null);
@@ -60,5 +62,5 @@ Provide these as the options argument in the `useInViewTrigger` hook
 | ---------- | ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
 | root       | Element            | document | The Intersection Observer interface's read-only root property identifies the Element or Document                                                           |     |
 | rootMargin | string             | 0px      | Margin around the root (css margin property )                                                                                                              |     |
-| threshold  | number or number[] | 0        | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger |     |
+| threshold  | number or number[] | 0.5      | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger |     |
 | callback   | function           | void     | A function that will be called when the observer is fired, (use it for your own logic)                                                                     |     |

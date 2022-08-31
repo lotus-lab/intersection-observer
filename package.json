@@ -1,16 +1,19 @@
 {
-  "name": "@intersection-observer/react",
-  "version": "0.0.01",
+  "name": "react-intersections",
+  "version": "0.0.06",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
+  "repository": {"url": "https://github.com/Humed-Muhammad/-intersection-observer"},
   "keywords": [
     "react",
     "react hooks",
     "typescript",
     "rollup",
-    "network check",
-    "react network check"
+    "inview check",
+    "react inview",
+    "intersections observer api",
+    "intersections observer react"
   ],
   "files": [
     "/lib"
