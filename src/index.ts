@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { InViewDataTypes, OptionsType } from './types';
-import { checkRootObject, visibilityTimer } from './helper';
+import { checkRootObject, intersectionCallback } from './helper';
 
 export const useInViewTrigger = (options?: OptionsType) => {
   const [inViewData, setInViewData] = useState<InViewDataTypes>({
@@ -9,8 +9,7 @@ export const useInViewTrigger = (options?: OptionsType) => {
     visibilityTime: 0,
     entry: null,
   });
-
-  const observerOptions = {
+  const observerOptions: OptionsType = {
     root: window.document,
     threshold: 0.5,
     rootMargin: '0px',
@@ -21,21 +20,14 @@ export const useInViewTrigger = (options?: OptionsType) => {
   const targetRef = useRef<any>(null);
   const observer = new IntersectionObserver(
     entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          observerOptions?.callback?.(inViewData);
-          inViewStateForObserveOnce.current = true;
-          return setInViewData({
-            inView: true,
-            entry
-          });
-        }
-        if (observerOptions.observeOnce && inViewStateForObserveOnce.current) {
-          return observer.disconnect();
-        }
-        return setInViewData({
-          inView: false,
-        });
+      intersectionCallback({
+        entries,
+        inViewStateForObserveOnce,
+        observer,
+        observerOptions,
+        setInViewData,
+        targetRef,
+        inViewData,
       });
     },
     {
@@ -44,22 +36,15 @@ export const useInViewTrigger = (options?: OptionsType) => {
     },
   );
 
-  const handleObserver = useCallback(() => {
+  const handleObserver = useCallback(async () => {
     if (targetRef?.current) {
       observer.observe(targetRef?.current!);
     }
   }, []);
-  const interval = setInterval(() => {
-    setInViewData({
-      ...inViewData,
-      visibilityTime: visibilityTimer(inViewData.entry?.target as never)
-  })
-}, 1000);
+
   useEffect(() => {
     handleObserver();
-    return () => {
-      clearInterval(interval);
-    }
   }, [handleObserver]);
+
   return { targetRef, ...inViewData };
 };
