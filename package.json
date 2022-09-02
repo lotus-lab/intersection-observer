@@ -7,13 +7,20 @@
   "repository": {"url": "https://github.com/Humed-Muhammad/-intersection-observer"},
   "keywords": [
     "react",
+    "react observer api",
+    "react intersection observer api",
     "react hooks",
     "typescript",
-    "rollup",
     "inview check",
     "react inview",
     "intersections observer api",
-    "intersections observer react"
+    "intersections observer react",
+    "lazyloadlazyloadlazy",
+    "loadvirtual",
+    "scrollinginfinite",
+    "scrolling",
+    "react-lazy-load",
+    "react-lazyloading", "react lazy"
   ],
   "files": [
     "/lib"
