@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 
 export interface OptionsType {
-  callback?: () => void;
+  callback?: (data:InViewDataTypes) => void;
   rootMargin?: string;
   threshold?: number;
   root?: RefObject<any> | Document;
@@ -10,5 +10,5 @@ export interface OptionsType {
 export interface InViewDataTypes {
   visibilityTime?: number;
   inView: boolean;
-  entry?:IntersectionObserverEntry
+  entry?:IntersectionObserverEntry | null
 }

@@ -7,6 +7,7 @@ export const useInViewTrigger = (options?: OptionsType) => {
   const [inViewData, setInViewData] = useState<InViewDataTypes>({
     inView: false,
     visibilityTime: 0,
+    entry: null,
   });
 
   const observerOptions = {
@@ -22,11 +23,10 @@ export const useInViewTrigger = (options?: OptionsType) => {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          observerOptions?.callback?.();
+          observerOptions?.callback?.(inViewData);
           inViewStateForObserveOnce.current = true;
           return setInViewData({
             inView: true,
-            visibilityTime: visibilityTimer(entry.target as never),
             entry
           });
         }
@@ -49,9 +49,17 @@ export const useInViewTrigger = (options?: OptionsType) => {
       observer.observe(targetRef?.current!);
     }
   }, []);
-
+  const interval = setInterval(() => {
+    setInViewData({
+      ...inViewData,
+      visibilityTime: visibilityTimer(inViewData.entry?.target as never)
+  })
+}, 1000);
   useEffect(() => {
     handleObserver();
+    return () => {
+      clearInterval(interval);
+    }
   }, [handleObserver]);
   return { targetRef, ...inViewData };
 };
