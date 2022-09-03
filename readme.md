@@ -31,7 +31,7 @@ In the past, determining an element's visibility or the relative visibility of t
 
 - 👌 Hooks - it's easier than ever to monitor elements
 
-- 👥 Uses native API - Intuitive to use
+- 👥 Uses native API
 
 - 📝 Written in TypeScript - It'll fit right into your existing TypeScript project
 
