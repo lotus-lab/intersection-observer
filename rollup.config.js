@@ -3,9 +3,7 @@
 import merge from "deepmerge";
 import { createBasicConfig } from "@open-wc/building-rollup";
 import typescript from "rollup-plugin-typescript2";
-import commonjs from '@rollup/plugin-commonjs';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-
+import { terser } from "rollup-plugin-terser";
 const baseConfig = createBasicConfig();
 
 export default merge(baseConfig, [
@@ -22,8 +20,7 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
-      nodeResolve(),
-      commonjs(),
+      terser()
     ],
   },
   {
@@ -39,8 +36,7 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
-      nodeResolve(),
-      commonjs(),
+      terser()
     ],
   },
 ]);
