@@ -3,6 +3,8 @@
 import merge from "deepmerge";
 import { createBasicConfig } from "@open-wc/building-rollup";
 import typescript from "rollup-plugin-typescript2";
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const baseConfig = createBasicConfig();
 
@@ -12,6 +14,7 @@ export default merge(baseConfig, [
     output: {
       dir: "lib/esm",
       format: "esm",
+      exports: 'named'
     },
     context: "window",
     plugins: [
@@ -19,6 +22,8 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
+      nodeResolve(),
+      commonjs(),
     ],
   },
   {
@@ -26,6 +31,7 @@ export default merge(baseConfig, [
     output: {
       dir: "lib/cjs",
       format: "cjs",
+      exports: 'named'
     },
     context: "window",
     plugins: [
@@ -33,6 +39,8 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
+      nodeResolve(),
+      commonjs(),
     ],
   },
 ]);
