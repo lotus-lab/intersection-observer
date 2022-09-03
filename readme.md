@@ -1,12 +1,14 @@
 # react-intersections
 
-#### Using npm
+## Installation
+
+### Using npm
 
 ```cmd
   npm install react-intersections
 ```
 
-#### Using yarn
+### Using yarn
 
 ```cmd
   yarn add react-intersections
@@ -19,9 +21,16 @@ In the past, determining an element's visibility or the relative visibility of t
 3. Reporting on the presence of ads so that ad revenues can be calculated.
 4. Choosing whether or not to perform tasks or animation processes based on whether or not the result will be seen by the user.
 
-======= Support both both esm and cjs modules =======
+## Features
 
-#### The hook for now returns a targetRef for your target, inView boolean, entry and a visibilityTime for how long the target was visible (best for calcualting ad revenues)
+🚸 Support both both esm and cjs modules
+✨ Visibility time tracked for you
+🚀 Optimized performance
+👌 Hooks - it's easier than ever to monitor elements
+👥 Uses native API - Intuitive to use
+📝 Written in TypeScript - It'll fit right into your existing TypeScript project
+🌳 Tree-shakeable - Only include the parts you use
+💥 Tiny bundle
 
 === More will be added in a future releases ===
 
@@ -42,9 +51,9 @@ when the observer is fired use it for your own logic.
 
 ```
 
-# Example
+## Example
 
-## Hooks
+### Hooks
 
 ```tsx
 import React from "react";
@@ -52,12 +61,10 @@ import { useInViewTrigger } from "react-intersections";
 
 export const App = () => {
   const rootRef = React.useRef<HTMLDivElement>(null);
-  const { targetRef, inView, visibilityTime, entry } = useInViewTrigger({
-    root: rootRef, // optional defualt to document or viewport
-    threshold: 1, // optional
-  });
+  const { targetRef, inView, visibilityTime, entry } =
+    useInViewTrigger(options); // options are optional
   return (
-    <div ref={rootRef}>
+    <div>
       <p ref={targetRef}></p>
     </div>
   );
