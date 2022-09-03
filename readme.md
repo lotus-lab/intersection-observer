@@ -23,14 +23,21 @@ In the past, determining an element's visibility or the relative visibility of t
 
 ## Features
 
-🚸 Support both both esm and cjs modules
-✨ Visibility time tracked for you
-🚀 Optimized performance
-👌 Hooks - it's easier than ever to monitor elements
-👥 Uses native API - Intuitive to use
-📝 Written in TypeScript - It'll fit right into your existing TypeScript project
-🌳 Tree-shakeable - Only include the parts you use
-💥 Tiny bundle
+- 🚸 Support both both esm and cjs modules
+
+- ✨ Visibility time tracked for you
+
+- 🚀 Optimized performance
+
+- 👌 Hooks - it's easier than ever to monitor elements
+
+- 👥 Uses native API - Intuitive to use
+
+- 📝 Written in TypeScript - It'll fit right into your existing TypeScript project
+
+- 🌳 Tree-shakeable - Only include the parts you use
+
+- 💥 Tiny bundle
 
 === More will be added in a future releases ===
 
