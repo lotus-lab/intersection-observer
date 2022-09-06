@@ -50,18 +50,18 @@ var intersectionCallback = function (_a) {
         if (entry.isIntersecting) {
             // @ts-ignore
             adBox.dataset.lastViewStarted = entry.time;
-            visibleAds === null || visibleAds === void 0 ? void 0 : visibleAds.add(adBox);
+            setInViewData({
+                inView: true,
+                visibilityTime: totalViewTime,
+                entry: entry,
+            });
             inViewStateForObserveOnce.current = true;
             (_a = observerOptions === null || observerOptions === void 0 ? void 0 : observerOptions.callback) === null || _a === void 0 ? void 0 : _a.call(observerOptions, {
                 entry: entry,
                 inView: true,
                 visibilityTime: totalViewTime,
             });
-            setInViewData({
-                inView: true,
-                visibilityTime: totalViewTime,
-                entry: entry,
-            });
+            visibleAds === null || visibleAds === void 0 ? void 0 : visibleAds.add(adBox);
         }
         else {
             setInViewData({
