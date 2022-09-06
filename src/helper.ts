@@ -23,7 +23,6 @@ export const updateAdTimer = (adBox: HTMLElement) => {
   }
 
   adBox.dataset.lastViewStarted = currentTime.toString();
-  
 };
 
 export const handleVisibilityChange = () => {
@@ -53,11 +52,16 @@ export const intersectionCallback = ({
 }: IntersectionCallback) => {
   entries.forEach(entry => {
     const adBox: HTMLElement | Element = entry.target;
+
     handleVisibilityChange();
     if (entry.isIntersecting) {
       // @ts-ignore
       adBox.dataset.lastViewStarted = entry.time;
-      visibleAds?.add(adBox);
+      setInViewData({
+        inView: true,
+        visibilityTime: totalViewTime,
+        entry,
+      });
       inViewStateForObserveOnce.current = true;
 
       observerOptions?.callback?.({
@@ -66,11 +70,7 @@ export const intersectionCallback = ({
         visibilityTime: totalViewTime,
       });
 
-      setInViewData({
-        inView: true,
-        visibilityTime: totalViewTime,
-        entry,
-      });
+      visibleAds?.add(adBox);
     } else {
       setInViewData({
         inView: false,
