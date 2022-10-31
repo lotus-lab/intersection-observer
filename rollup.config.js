@@ -3,7 +3,7 @@
 import merge from "deepmerge";
 import { createBasicConfig } from "@open-wc/building-rollup";
 import typescript from "rollup-plugin-typescript2";
-
+import { terser } from "rollup-plugin-terser";
 const baseConfig = createBasicConfig();
 
 export default merge(baseConfig, [
@@ -12,6 +12,7 @@ export default merge(baseConfig, [
     output: {
       dir: "lib/esm",
       format: "esm",
+      exports: 'named'
     },
     context: "window",
     plugins: [
@@ -19,6 +20,7 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
+      terser()
     ],
   },
   {
@@ -26,6 +28,7 @@ export default merge(baseConfig, [
     output: {
       dir: "lib/cjs",
       format: "cjs",
+      exports: 'named'
     },
     context: "window",
     plugins: [
@@ -33,6 +36,7 @@ export default merge(baseConfig, [
         rollupCommonJSResolveHack: false,
         clean: true,
       }),
+      terser()
     ],
   },
 ]);

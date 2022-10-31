@@ -36,7 +36,7 @@ export const useInViewTrigger = (options?: OptionsType) => {
     },
   );
 
-  const handleObserver = useCallback(async () => {
+  const handleObserver = useCallback(() => {
     if (targetRef?.current) {
       observer.observe(targetRef?.current!);
     }
